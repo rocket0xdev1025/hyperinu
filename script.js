@@ -1,13 +1,13 @@
 /* =====================================================================
    HYPER INU ($HI) - CONFIG
    Fill these in at launch. Everything on the page updates automatically.
-   CA:    the $HI token contract on Ethereum (0x + 40 hex chars). 'TBA' until live.
+   CA:    the $HI token contract on Ethereum (0x + 40 hex chars). '0xe78f1b67c3c5d7e8c9836061621f8e0ca914d16a' until live.
    X:     full URL to the X profile, e.g. 'https://x.com/hyperinu'   ('' = shows "Soon")
    TG:    full URL to the Telegram group, e.g. 'https://t.me/hyperinu' ('' = shows "Soon")
    CHAIN: DexScreener chain slug.
    ===================================================================== */
 const CONFIG = {
-  CA: 'TBA',
+  CA: '0xe78f1b67c3c5d7e8c9836061621f8e0ca914d16a',
   X: 'https://x.com/hyper_inu_x',
   TG: 'https://t.me/hyper_inu',
   CHAIN: 'ethereum'
@@ -19,7 +19,7 @@ const CONFIG = {
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const CA_RE = /^0x[a-fA-F0-9]{40}$/;
   const caValid = CA_RE.test(CONFIG.CA);
-  const caOrTBA = caValid ? CONFIG.CA : 'TBA';
+  const caOrTBA = caValid ? CONFIG.CA : '0xe78f1b67c3c5d7e8c9836061621f8e0ca914d16a';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const touch = matchMedia('(hover: none), (pointer: coarse)').matches;
   const narrow = () => innerWidth <= 900;
@@ -55,7 +55,7 @@ const CONFIG = {
     document.body.appendChild(ta); ta.select(); let ok = false; try { ok = document.execCommand('copy'); } catch (e) {} ta.remove(); return ok;
   }
   $$('[data-copy]').forEach(b => b.addEventListener('click', async () => {
-    if (!caValid) { toast('CA is TBA - announced at launch on official channels'); return; }
+    if (!caValid) { toast('CA is 0xe78f1b67c3c5d7e8c9836061621f8e0ca914d16a - announced at launch on official channels'); return; }
     let ok = false;
     try { if (navigator.clipboard && isSecureContext) { await navigator.clipboard.writeText(CONFIG.CA); ok = true; } } catch (e) {}
     if (!ok) ok = fallbackCopy(CONFIG.CA);
